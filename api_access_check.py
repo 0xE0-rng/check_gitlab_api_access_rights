@@ -9,10 +9,12 @@ test_endpoints = ["personal_access_tokens",
                   # using a random username
                   "projects?sudo=random_user"]
 
-api_levels=("api/read_api",
-			"read_user",
-			"read_repository",
-			"sudo")
+api_levels=[
+    "api/read_api",
+    "read_user",
+    "read_repository",
+    "sudo"
+            ]
 
 
 if len(sys.argv) < 3:
@@ -36,3 +38,8 @@ for i, endpoint in enumerate(test_endpoints):
         # we might get a list as a result
         pass
     print("[!] API key has permission level:", api_levels[i])
+    if i==0:
+        print(f"    -> Check the detailed permissions of all keys on: http://{base_url}/api/v4/personal_access_tokens?private_token={token}")
+
+
+
